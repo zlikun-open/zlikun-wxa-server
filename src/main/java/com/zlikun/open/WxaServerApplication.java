@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
  * @date 2018-10-09 15:00
  */
 @SpringBootApplication
-@PropertySource("file:///D:/data/app/zlikun-wxa-server/application.properties")
+@PropertySource("file:///${user.home}/my/zlikun-wxa-server/application.properties")
 public class WxaServerApplication {
 
     public static void main(String[] args) {

@@ -8,5 +8,6 @@ public interface AppConstants {
 
     String KEY_OPEN_ID = "openid";
     String KEY_SESSION_KEY = "session_key";
+    String KEY_RETURN_CODE = "return_code";
 
 }

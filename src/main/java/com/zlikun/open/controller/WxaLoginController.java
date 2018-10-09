@@ -14,12 +14,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
+import static com.zlikun.open.config.AppConstants.KEY_OPEN_ID;
 import static com.zlikun.open.config.AppConstants.KEY_SESSION_KEY;
 
 /**
@@ -162,6 +166,21 @@ public class WxaLoginController {
         }
 
         return ResponseEntity.ok(flag);
+    }
+
+    /**
+     * 该API仅用于调试用!!!
+     *
+     * @param token
+     * @return
+     */
+    @GetMapping("/login/{token}")
+    public Object queryTokenInfo(@PathVariable("token") String token) {
+        Map<String, String> data = new HashMap<>(4);
+        data.put("token", token);
+        data.put(KEY_OPEN_ID, tokenService.getOpenId(token));
+        data.put(KEY_SESSION_KEY, tokenService.getSessionKey(token));
+        return data;
     }
 
 }
